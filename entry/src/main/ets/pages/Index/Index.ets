@@ -1,3 +1,6 @@
+import { _getUser } from "./Model"
+
+
 @Entry
 @Component
 struct Index {
@@ -9,6 +12,12 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+         Button("刷新")
+           .onClick(async ()=>{
+             const data = await _getUser();
+             this.message = data.content
+           })
+
       }
       .width('100%')
     }
